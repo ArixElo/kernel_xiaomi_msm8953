@@ -54,7 +54,7 @@ endif
 obj-$(CONFIG_CRYPTO_CRC32_ARM64) += crc32-arm64.o
 
 ifeq ($(filter -mcpu=%, $(MACH_CFLAGS)),)
-CFLAGS_crc32-arm64.o	:= -mcpu=generic+crc
+CFLAGS_crc32-arm64.o	:= -mcpu=generic+crc $(filter -mcpu=%, $(KBUILD_CFLAGS))
 endif
 
 $(obj)/aes-glue-%.o: $(src)/aes-glue.c FORCE
